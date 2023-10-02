@@ -1,24 +1,37 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# <!--BookCafe-->
+​
+## サイト概要
+### サイトテーマ
+<!--何を『目的』とし、どのような『分類』なのかを簡潔に書く-->
+<!-- 「カフェ好きな読書家が集まるサイト」「Starbucksなどのカフェ好きなコミュニティ・販売サイト」ポータルサイト的なもの -->
+​
+### テーマを選んだ理由
+<!--なぜこのようなテーマにしたかを説明する-->
+<!-- 読書家が休日にリラックスしながら本を読み進められる空間として本を読みながらコーヒーが楽しめる。読書×カフェを体験出来る場所を探すのに使って頂くこと。
+ブックカフェとは、カフェと書店が一つになったお店のことを指します。 近年、書店の廃業が増加している背景もあり、本や雑誌の販売だけでなく、プラスアルファの魅力が求められています。 書店がカフェを併設したり、逆にカフェが店内に本を置いたりと、「ブックカフェ」という業態は年々増加しているようです。 -->
+​
+### ターゲットユーザ
+<!--誰に使ってもらうかを具体的に記載する-->
+<!-- 読書家・カフェ好き -->
+​
+### 主な利用シーン
+<!--どのような時に使うのかの状況を記載すること-->
+<!-- 休日など、空いた時間にブックカフェを探すのに使えます -->
+​
+## 設計書
+<!--テーマを設定・提出する時点では不要です-->
+​
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+​
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- アプリケーションの実装に使用したgem/bootstrapのリファレンスなどの記載は不要です。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
+- starbucks　API
+- ホットペッパー　API
+折りたたむ
