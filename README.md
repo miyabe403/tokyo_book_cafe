@@ -1,24 +1,44 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# 東京BookCafe
+![TokyoBookCafeLogo](https://github.com/miyabe403/tokyo_book_cafe/assets/108040533/d0099e52-a0ff-4adc-bd6d-02bd3b3c905b)
+​
+## サイト概要
+### サイトテーマ
+<!--何を『目的』とし、どのような『分類』なのかを簡潔に書く-->
+ 「カフェ好きな読書家が集まるサイト」「お洒落なカフェ好き向けのコミュニティ機能付き EC(販売)サイト」
+​
+### テーマを選んだ理由
+<!--なぜこのようなテーマにしたかを説明する-->
+ 趣味でよく本屋さんに足を運ぶことが多いのですが、書店の廃業が増加しているなどのニュース情報から、
+ 書店がカフェを併設したり、逆にカフェが店内に本を置いたりと、「ブックカフェ」という業態は年々増加しているようです。
+ 本や雑誌の販売だけでなく、プラスアルファの魅力が詰まっている、「ブックカフェ」をテーマにしたアプリを作成したいと思い、
+ こちらのアプリを制作しました。
+ 読書家が休日にリラックスしながら本を読み進められる空間として本を読みながらコーヒーが楽しめる。
+ 読書×カフェを体験出来る場所を探すのにいかがでしょうか。
+​
+### ターゲットユーザ
+<!--誰に使ってもらうかを具体的に記載する-->
+ * 読書家・カフェ好き
+ * 落ち着いた場所で、リラックスしたい人
+ * 作業スペースを探している人
+​
+### 主な利用シーン
+<!--どのような時に使うのかの状況を記載すること-->
+ * 休日など、空いた時間にブックカフェを探すのに使えます
+ * 読書家のコミュニティに参加したいとき
+ * カフェのメニューを眺めたいとき
+​
+## 設計書
+<!--テーマを設定・提出する時点では不要です-->
+​
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+​
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- アプリケーションの実装に使用したgem/bootstrapのリファレンスなどの記載は不要です。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
+折りたたむ
