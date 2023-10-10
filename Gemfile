@@ -60,5 +60,5 @@ gem 'devise'
 gem 'kaminari','~> 1.2.1'
 # bootstrap をインストール 
 gem 'bootstrap5-kaminari-views', '~> 0.0.1'
-# enum をインストール
+# enum をインストール 
 gem "enum_help"
