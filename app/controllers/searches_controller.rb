@@ -1,5 +1,5 @@
 class SearchesController < ApplicationController
-  def search
+  def search 
   end
 
 end
