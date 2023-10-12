@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  # アソシエーションを設定 
+  # アソシエーションを設定  
   belongs_to :genre
 
   # 画像投稿に必要な ActiveStorage を設定 
