@@ -6,14 +6,24 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <!-- FontAwesomeの導入 --> 
+    <!-- FontAwesomeの導入 -->
     <script src="https://kit.fontawesome.com/5ebbe60a2a.js" crossorigin="anonymous"></script>
-    <!-- app/views/layouts/application.html.erb の記述を変更 --> 
+    <!-- app/views/layouts/application.html.erb の記述を変更 -->
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="wrapper">
+      <header class="bar-color">
+        <%= render 'layouts/header' %>
+      </header>
+      <main class="main-background" style="background-image:url(<%= asset_path "Backgrounds4.png", :size => '30x20' %>);　no-repeat center top; background-size:100%;background-color: #e69a9a52">
+        <%= yield %>
+      </main>
+      <footer class="bar-color" style="background-image:url(<%= asset_path "Backgrounds.png", :size => '30x20' %>);　no-repeat center top; background-size:100%;background-color:#db000052">
+        <%= render 'layouts/footer' %>
+      </footer>
+    </div>
   </body>
 </html>
