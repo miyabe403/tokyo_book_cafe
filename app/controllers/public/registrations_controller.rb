@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::RegistrationsController < Devise::RegistrationsController
-  # ストロングパラメータと同様の機能 
+  # ストロングパラメータと同様の機能  
   #  devise に、会員登録時に「会員姓」「会員名」「会員カナ姓」「会員カナ名」「郵便番号」「住所」「電話番号」は保存できるよう、許可を与える設定
   before_action :configure_permitted_parameters, if: :devise_controller?
 
