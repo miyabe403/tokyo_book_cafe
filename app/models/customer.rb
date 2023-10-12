@@ -14,4 +14,6 @@ class Customer < ApplicationRecord
   validates :postal_code, presence: true
   validates :address, presence: true
   
+  # アソシエーションを設定
+  has_many :addresses, dependent: :destroy
 end
