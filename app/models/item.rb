@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   # アソシエーションを設定 
   belongs_to :genre
 
-  # 画像投稿に必要な ActiveStorage を設定
+  # 画像投稿に必要な ActiveStorage を設定 
   has_one_attached :image
 
   def get_image(width, height)
