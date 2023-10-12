@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
       end
   end
   
-  # サインアウト後の遷移先を設定
+  # サインアウト後の遷移先を設定 
   def
   after_sign_out_path_for(resource_or_scope)
       # resource_or_scope という引数に会員 or 管理者のインスタンス格納されている場合の処理
