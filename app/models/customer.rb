@@ -3,7 +3,7 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  # バリデーションを設定
+  # バリデーションを設定 
   # validatesで対象とする項目を指定し、入力されたデータの
   # presence（存在）をチェックします。 trueと記述すると、
   # データが存在しなければならないという設定になります。
