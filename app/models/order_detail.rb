@@ -1,5 +1,5 @@
 class OrderDetail < ApplicationRecord
-  # アソシエーションを設定
+  # アソシエーションを設定 
   belongs_to :order
   belongs_to :item
   
