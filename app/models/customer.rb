@@ -15,7 +15,8 @@ class Customer < ApplicationRecord
   validates :first_name_kana, presence: true
   validates :postal_code, presence: true
   validates :address, presence: true
-  
+
   # アソシエーションを設定
   has_many :addresses, dependent: :destroy
+  has_many :orders, dependent: :destroy
 end
