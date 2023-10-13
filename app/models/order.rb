@@ -16,7 +16,7 @@ class Order < ApplicationRecord
 
   }
   
-  # 請求額を求めるメソッド
+  # 請求額を求めるメソッド 
   def billing_amount
     self.total_price + self.delivery_charge
   end
