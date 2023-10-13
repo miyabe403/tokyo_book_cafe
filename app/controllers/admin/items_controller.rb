@@ -6,6 +6,7 @@ class Admin::ItemsController < ApplicationController
   end
   
   def index
+    @search = "False"
     @item = Item.new
     @genres = Genre.all
   end

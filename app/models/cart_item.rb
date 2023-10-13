@@ -1,7 +1,8 @@
 class CartItem < ApplicationRecord
-  # アソシエーションを設定 
+  # アソシエーションを設定  
   belongs_to :customer
   belongs_to :item
+  belongs_to :order, optional: true
   
   # 合計金額を表示させる処理 
   # モデルに subtotal (小計) メソッドを定義 

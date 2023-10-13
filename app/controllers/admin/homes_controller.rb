@@ -2,7 +2,6 @@
 
 class Admin::HomesController < ApplicationController
   def top
-    @genres = Genre.all
-    @items = Item.order('id DESC').limit(4)
+    @items = Item.all.order(created_at: :asc).page(params[:page]).per(10)
   end
 end
