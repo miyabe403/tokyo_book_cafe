@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   # アソシエーションを設定  
   belongs_to :genre
-  has_many :cart_items 
+  has_many :cart_items, dependent: :destroy
 
   # 画像投稿に必要な ActiveStorage を設定 
   has_one_attached :image
