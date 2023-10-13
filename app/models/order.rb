@@ -8,11 +8,11 @@ class Order < ApplicationRecord
   # enum の設定
   # 注文ステータス
   enum status: {
-    waiting: 0,     # waiting (入金待ち)  例 : waiting_payment（入金待ち）
-    paid_up: 1,     # paid_up (支払い済み)例 : confirm_payment（入金確認）
-    making: 2,      # making (制作中) 　　例 : shipped（出荷済み）
-    preparing: 3,   # pewparing (準備中)  例 : out_for_delivery（配送中）
-    shippend: 4     # shippend (配達済み) 例 : delivered（配達済み）
+    waiting: 0,     # waiting (入金待ち) 
+    paid_up: 1,     # paid_up (入金確認) 
+    making: 2,      # making (製作中) 　
+    preparing: 3,   # pewparing (発送準備中)  
+    shippend: 4     # shippend (発送済み)
 
   }
   
