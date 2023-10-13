@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  # アソシエーションを設定  
+  # アソシエーションを設定   
   belongs_to :genre
   has_many :cart_items, dependent: :destroy
 
