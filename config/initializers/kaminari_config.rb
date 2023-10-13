@@ -11,4 +11,6 @@ Kaminari.configure do |config|
   # config.param_name = :page
   # config.max_pages = nil
   # config.params_on_first_page = false
+  # config.default_per_page = 8を設定することで、Controller内の.per(8)を省略できるようになります。
+  config.default_per_page = 8
 end

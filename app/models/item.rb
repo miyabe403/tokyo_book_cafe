@@ -1,10 +1,11 @@
 class Item < ApplicationRecord
   # アソシエーションを設定  
   belongs_to :genre
+  has_many :cart_items 
 
   # 画像投稿に必要な ActiveStorage を設定 
   has_one_attached :image
-
+  
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
