@@ -1,2 +1,18 @@
 // application.scssファイルに記述を追記 
 @use '~bootstrap/scss/bootstrap';
+
+.page_title {
+  background-color: #ddd;
+}
+
+.admin-login {
+  margin-left: 160px;
+}
+
+.customer-login {
+  margin-left: 175px;
+}
+
+.session-content {
+  padding-bottom: 150px;
+}
