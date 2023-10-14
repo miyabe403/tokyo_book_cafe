@@ -1,5 +1,3 @@
-require "test_helper"
-
 class SearchesController < ApplicationController
   def search 
     @search = "True"
