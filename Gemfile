@@ -67,7 +67,7 @@ gem "enum_help"
 # データベースの接続設定で「環境変数」を利用するので、環境変数を管理するGemも追加
 # 環境変数とはシステム上で利用できる「変数」のこと
 # Gem「dotenv-rails」では、プロジェクトごとにファイルベースで環境変数を管理することができます。
-gem 'dotenv-rails'
+gem 'dotenv-rails' 
 group :production do
   gem 'mysql2'
 end
