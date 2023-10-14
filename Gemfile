@@ -62,3 +62,12 @@ gem 'kaminari','~> 1.2.1'
 gem 'bootstrap5-kaminari-views', '~> 0.0.1'
 # enum をインストール 
 gem "enum_help"
+
+# 本番環境でMySQLを利用するための設定
+# データベースの接続設定で「環境変数」を利用するので、環境変数を管理するGemも追加
+# 環境変数とはシステム上で利用できる「変数」のこと
+# Gem「dotenv-rails」では、プロジェクトごとにファイルベースで環境変数を管理することができます。
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
