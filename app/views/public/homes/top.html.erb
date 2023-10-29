@@ -1,31 +1,115 @@
-<div class="container pt-5 pb-5">
-  <p class="<%= flash[:color] %>"><%= notice %></p>
-  <div class="row">
-    <div class="col-2">
-      <%#= render 'public/items/genre_list', genres: @genres %>
+
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+  <a class="navbar-brand col-sm-4 col-md-2 mr-0" href="#">Tokyo Book Cafe</a>
+    <form action="search.php" method="POST" class="w-100">
+      <input class="form-control form-control-dark" type="text" placeholder="Search">
+    </form>
+  <ul class="navbar-nav px-3">
+    <li class="nav-item text-nowrap">
+      <a class="nav-link" href="#">Log out</a>
+    </li>
+  </ul>
+</nav>
+<div class="container-fluid">
+    <div class="row navbar-expand-md">
+        <nav class="col-md-3 col-lg-2 bg-light navbar-collapse collapse sidebar" id="sidenav">
+            <div class="sidebar-sticky flex-column w-100 mt-1">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            <span data-feather="home"></span> Dashboard <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="file"><%= link_to 'Chat', root_path, class: "btn btn-light" %></span>
+                        </a>
+                    </li>
+                    <!--<li class="nav-item">-->
+                    <!--    <a class="nav-link" href="#">-->
+                    <!--        <span data-feather="shopping-cart"></span> Products-->
+                    <!--    </a>-->
+                    <!--</li>-->
+                    <!--<li class="nav-item">-->
+                    <!--    <a class="nav-link" href="#">-->
+                    <!--        <span data-feather="users"></span> Customers-->
+                    <!--    </a>-->
+                    <!--</li>-->
+                    <!--<li class="nav-item">-->
+                    <!--    <a class="nav-link" href="#">-->
+                    <!--        <span data-feather="bar-chart-2"></span> Reports-->
+                    <!--    </a>-->
+                    <!--</li>-->
+                    <!--<li class="nav-item">-->
+                    <!--    <a class="nav-link" href="#">-->
+                    <!--        <span data-feather="layers"></span> Integrations-->
+                    <!--    </a>-->
+                    <!--</li>-->
+                </ul>
+
+            <!--    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">-->
+            <!--  <span>Saved reports</span>-->
+            <!--  <a class="d-flex align-items-center text-muted" href="#">-->
+            <!--    <span data-feather="plus-circle"></span>-->
+            <!--  </a>-->
+            <!--</h6>-->
+            <!--    <ul class="nav flex-column mb-2">-->
+            <!--        <li class="nav-item">-->
+            <!--            <a class="nav-link" href="#">-->
+            <!--                <span data-feather="file-text"></span> Current month-->
+            <!--            </a>-->
+            <!--        </li>-->
+            <!--        <li class="nav-item">-->
+            <!--            <a class="nav-link" href="#">-->
+            <!--                <span data-feather="file-text"></span> Last quarter-->
+            <!--            </a>-->
+            <!--        </li>-->
+            <!--        <li class="nav-item">-->
+            <!--            <a class="nav-link" href="#">-->
+            <!--                <span data-feather="file-text"></span> Social engagement-->
+            <!--            </a>-->
+            <!--        </li>-->
+            <!--        <li class="nav-item">-->
+            <!--            <a class="nav-link" href="#">-->
+            <!--                <span data-feather="file-text"></span> Year-end sale-->
+            <!--            </a>-->
+            <!--        </li>-->
+            <!--    </ul>-->
+            </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <div class="container pt-5 pb-5">
+              <p class="<%= flash[:color] %>"><%= notice %></p>
+              <div class="row">
+                <div class="col-2">
+                  <%#= render 'public/items/genre_list', genres: @genres %>
+                </div>
+                <div class="col-9 offset-1">
+                  <div class="card-top">
+                    <%= image_tag 'daikanyama-about.jpg',class: "card-img" %>
+                    <div class="card-img-overlay ml-4">
+                      <p class="h6 pt-1" style="color: white;">
+                        ようこそ、東京BookCafeへ！<br>
+                        <br>
+                        本を読みながらコーヒーを楽しむBookCafeはいかがでしょうか。<br>
+                        このサイトでは、東京に集まるBookCafe の<br>魅力をお伝えしつつ、<br>
+                        読書家やカフェ好きの、コミュニティスペースとしてご利用頂けます。<br>
+                        また、合わせて<br>コーヒー・書籍の販売(ECサイト)もしております。<br>
+                        気軽にご利用ください。
+                      </p>
+                    </div>
+                  </div>
+                  <h3 class="mt-2">新着商品</h3>
+                  <div class="w-100 d-flex justify-content-center">
+                    <%#= render 'public/items/index', items: @items %>
+                  </div>
+                  <div class="row justify-content-end">
+                    <%= link_to '全ての商品を見る＞', items_path %>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </main>
     </div>
-    <div class="col-9 offset-1">
-      <div class="card">
-        <%= image_tag 'daikanyama-about.jpg',class: "card-img" %>
-        <div class="card-img-overlay ml-4">
-          <p class="h6 pt-1" style="color: white;">
-            ようこそ、東京BookCafeへ！<br>
-            <br>
-            本を読みながらコーヒーを楽しむBookCafeはいかがでしょうか。<br>
-            このサイトでは、東京に集まるBookCafe の<br>魅力をお伝えしつつ、<br>
-            読書家やカフェ好きの、コミュニティスペースとしてご利用頂けます。<br>
-            また、合わせて<br>コーヒー・書籍の販売(ECサイト)もしております。<br>
-            気軽にご利用ください。
-          </p>
-        </div>
-      </div>
-      <h3 class="mt-2">新着商品</h3>
-      <div class="w-100 d-flex justify-content-center">
-        <%#= render 'public/items/index', items: @items %>
-      </div>
-      <div class="row justify-content-end">
-        <%= link_to '全ての商品を見る＞', items_path %>
-      </div>
-    </div>
-  </div>
 </div>
