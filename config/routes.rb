@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-    sesions: "admin/sessions"
+    sessions: "admin/sessions"
   }
   namespace :admin do
     get '/' => 'homes#top'
