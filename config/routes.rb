@@ -8,7 +8,6 @@ Rails.application.routes.draw do
     devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
-  
     }
 
     resource :customers, only: [:show] do
@@ -34,9 +33,8 @@ Rails.application.routes.draw do
   end
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-    sesions: "admin/sessions"
+    sessions: "admin/sessions"
   }
-  
   namespace :admin do
     get '/' => 'homes#top'
     resources :items, except: [:destroy, :index]
