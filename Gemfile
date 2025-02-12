@@ -75,3 +75,8 @@ end
 gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
+
+# Gemfile
+gem 'httparty'
+gem 'chartkick'
+gem 'groupdate'

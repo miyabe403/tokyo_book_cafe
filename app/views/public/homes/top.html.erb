@@ -1,30 +1,355 @@
-
+<header>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
   <a class="navbar-brand col-sm-4 col-md-2 mr-0" href="#">Tokyo Book Cafe</a>
-    <form action="search.php" method="POST" class="w-100">
-      <input class="form-control form-control-dark" type="text" placeholder="Search">
-    </form>
+  <form action="search.php" method="POST" class="w-100">
+    <input class="form-control form-control-dark" type="text" placeholder="Search">
+  </form>
   <ul class="navbar-nav px-3">
     <li class="nav-item text-nowrap">
       <a class="nav-link" href="#">Log out</a>
     </li>
   </ul>
 </nav>
+</header>
+
 <div class="container-fluid">
-    <div class="row navbar-expand-md">
-        <nav class="col-md-3 col-lg-2 bg-light navbar-collapse collapse sidebar" id="sidenav">
-            <div class="sidebar-sticky flex-column w-100 mt-1">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">
-                            <span data-feather="home"></span> Dashboard <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="chats/show">
-                            <span data-feather="file"><%= link_to 'Chat', root_path, class: "btn btn-light" %></span>
-                        </a>
-                    </li>
+  <div class="row navbar-expand-md">
+    <nav class="col-md-3 col-lg-2 bg-light navbar-collapse collapse sidebar" id="sidenav">
+      <div class="sidebar-sticky flex-column w-100 mt-1">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" href="#home">
+              <span data-feather="home"></span>TokyoBookCafe<span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#reading-records">
+              <span data-feather="file">読書記録</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#reading-time">
+              <span data-feather="bar-chart-2">読書時間のグラフ</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#reading-pages">
+              <span data-feather="bar-chart">読書ページ数のグラフ</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#instagram">
+              <span data-feather="instagram">Instagram 投稿</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#bookstore-news">
+              <span data-feather="rss">書店の最新ニュース</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-5">
+      <p class="<%= flash[:color] %> ml-sm-auto"><%= notice %></p>
+      <div class="row" style="background-color: rgba(255, 255, 255, 0.8);">
+        <div class="col-9 offset-1">
+          <div class="card-top">
+            <h3 class="mt-2">ようこそ、東京BookCafeへ！</h3>
+            <p class="h6 pt-1" style="color: black;">
+              本を読みながらコーヒーを楽しむBookCafeは<br>いかがでしょうか。<br><br>
+              このサイトでは、東京に集まるBookCafe の<br>魅力をお伝えしつつ、<br>
+              読書家やカフェ好きの、コミュニティスペースとして<br>ご利用頂けます。<br><br>
+              また、合わせて<br>コーヒー・書籍の販売(ECサイト)もしております。<br><br>
+              気軽にご利用ください。
+            </p>
+            <%= image_tag 'daikanyama-about.jpg', class: "card-img" %>
+          </div>
+
+          <h3 class="mt-2">新着商品</h3>
+
+          <!-- Flexboxを使用して商品を4列で表示 -->
+          <div class="d-flex flex-wrap">
+            <% @items.each do |item| %>
+              <div class="col-3 p-2">
+                <div class="card" style="width: 18rem;">
+                  <%= image_tag item.image_url, class: "card-img-top" %>
+                  <div class="card-body">
+                    <h5 class="card-title"><%= item.name %></h5>
+                    <p class="card-text"><%= item.description %></p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="row justify-content-end">
+            <%= link_to '全ての商品を見る＞', starbucks_path %>
+          </div>
+
+          <h3>読書記録</h3>
+
+          <!-- GridLayoutを使用して読書記録を4列で表示 -->
+          <div class="row row-cols-1 row-cols-md-4 g-4">
+            <% @reading_records.each do |record| %>
+              <div class="col">
+                <div class="card">
+                  <img src="<%= record.cover_image %>" class="card-img-top" alt="<%= record.title %>のカバー画像">
+                  <div class="card-body" style="overflow: hidden; padding: 1rem;">
+                    <h5 class="card-title" style="word-wrap: break-word; white-space: normal;"><%= record.title %> by <%= record.author %></h5>
+                    <p class="card-text" style="word-wrap: break-word; white-space: normal;">読んだページ数: <%= record.pages_read %></p>
+                    <p class="card-text" style="word-wrap: break-word; white-space: normal;">読書時間: <%= record.reading_time %> 時間</p>
+                    <p class="card-text" style="word-wrap: break-word; white-space: normal;">読了日: <%= record.read_at %></p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+
+          <!--%= link_to '新しい記録を作成', create_record_post_pat %>-->
+          <div class="py-3">
+            <!-- フォーム表示用ボタン -->
+            <%= button_to '新しい記録を作成', '#', class: 'btn btn-success', id: 'toggleFormBtn' %>
+          </div>
+          
+          <!-- フォーム自体は初期状態で非表示にしておく -->
+          <div id="recordForm" style="display: none;">
+          <%= form_with url: create_record_post_path, method: :post, local: true do |f| %>
+            <div class="mb-3">
+              <%= f.label :title, "タイトル", class: 'form-label' %>
+              <%= f.text_field :title, class: 'form-control' %>
+            </div>
+            
+            <div class="mb-3">
+              <%= f.label :author, "著者", class: 'form-label' %>
+              <%= f.text_field :author, class: 'form-control' %>
+            </div>
+            
+            <div class="mb-3">
+              <%= f.label :pages_read, "読んだページ数", class: 'form-label' %>
+              <%= f.number_field :pages_read, class: 'form-control' %>
+            </div>
+            
+            <div class="mb-3">
+              <%= f.label :reading_time, "読書時間（時間）", class: 'form-label' %>
+              <%= f.number_field :reading_time, class: 'form-control' %>
+            </div>
+            
+            <div class="mb-3">
+              <%= f.label :read_at, "読書日時", class: 'form-label' %>
+              <%= f.datetime_local_field :read_at, class: 'form-control' %>
+            </div>
+            
+            <div class="mb-3">
+              <%= f.label :cover_image, "カバー画像URL", class: 'form-label' %>
+              <%= f.text_field :cover_image, class: 'form-control' %>
+            </div>
+            
+            <div class="mb-3">
+              <%= f.submit "記録を保存", class: 'btn btn-primary' %>
+            </div>
+          <% end %>
+          </div>
+          
+          <script>
+            // ボタンがクリックされた時にフォームをトグル表示
+            document.getElementById('toggleFormBtn').addEventListener('click', function(event) {
+              event.preventDefault();  // ボタンのデフォルト動作（リンク遷移）をキャンセル
+              var form = document.getElementById('recordForm');
+              
+              // フォームの表示・非表示を切り替え
+              if (form.style.display === "none") {
+                form.style.display = "block";  // フォームを表示
+              } else {
+                form.style.display = "none";  // フォームを非表示
+              }
+            });
+          </script>
+          
+          <h3>読書時間のグラフ</h3>
+          <canvas id="readingTimeChart" width="400" height="200"></canvas>
+          
+          <h3>読書ページ数のグラフ</h3>
+          <canvas id="pagesReadChart" width="400" height="200"></canvas>
+          
+          <h3>Instagram 投稿</h3>
+
+          <!-- インスタグラム投稿を2列で表示 -->
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DFaDP-fsBdj/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:100%;">
+                <div style="padding:16px;">
+                  <a href="https://www.instagram.com/p/DFaDP-fsBdj/?utm_source=ig_embed&amp;utm_campaign=loading" style="background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
+                    <!-- Instagram投稿の内容 -->
+                  </a>
+                </div>
+              </blockquote>
+            </div>
+          
+            <div class="col-md-6 mb-4">
+              <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DDt6dhTzipX/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:100%;">
+                <div style="padding:16px;">
+                  <a href="https://www.instagram.com/p/DDt6dhTzipX/?utm_source=ig_embed&amp;utm_campaign=loading" style="background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
+                    <!-- Instagram投稿の内容 -->
+                  </a>
+                </div>
+              </blockquote>
+            </div>
+          </div>
+          
+          <script async src="//www.instagram.com/embed.js"></script>
+          
+          <h3>書店の最新ニュース</h3>
+          <div id="instagram-feed"></div>
+          
+          <script>
+          // 読書時間データ（時間単位）
+          var readingTimeData = <%= @reading_records.map { |r| r.reading_time }.to_json %>;  // 例：それぞれの本の読書時間（時間単位）
+          var bookTitles = <%= @reading_records.map { |r| r.title }.to_json.html_safe %>;  // 本のタイトル
+          // 読書ページ数データ
+          var pagesReadData = <%= @reading_records.map { |r| r.pages_read }.to_json %>;  
+        
+          // グラフを描画するキャンバスを取得
+          var ctx = document.getElementById('readingTimeChart').getContext('2d');
+        
+          // グラフを作成
+          var readingTimeChart = new Chart(ctx, {
+            type: 'bar',  // グラフのタイプ（棒グラフ）
+            data: {
+              labels: bookTitles,  // X軸のラベル（本のタイトル）
+              datasets: [{
+                label: '読書時間 (時間)',  // グラフのラベル
+                data: readingTimeData,  // グラフのデータ（読書時間）
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',  // 棒の背景色
+                borderColor: 'rgba(54, 162, 235, 1)',  // 棒の枠線の色
+                borderWidth: 1  // 棒の枠線の太さ
+              }]
+            },
+            options: {
+              scales: {
+                x: { 
+                  title: {
+                    display: true,
+                    text: '本のタイトル'
+                  }
+                },
+                y: {
+                  title: {
+                    display: true,
+                    text: '読書時間 (時間)'
+                  }
+                }
+              }
+            }
+          });
+          
+          // 2つ目のグラフ - 読書ページ数のグラフ
+          var ctxPagesRead = document.getElementById('pagesReadChart').getContext('2d');
+          var pagesReadChart = new Chart(ctxPagesRead, {
+            type: 'bar',  // 棒グラフ
+            data: {
+              labels: bookTitles,  // X軸：本のタイトル
+              datasets: [{
+                label: '読書ページ数',  // グラフのラベル
+                data: pagesReadData,  // データ：読書ページ数
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',  // 棒の背景色
+                borderColor: 'rgba(75, 192, 192, 1)',  // 棒の枠線の色
+                borderWidth: 1  // 棒の枠線の太さ
+              }]
+            },
+            options: {
+              indexAxis: 'y',  // X軸とY軸を入れ替え（横棒にする）
+              scales: {
+                x: {
+                  title: {
+                    display: true,
+                    text: '読書ページ数'  // X軸タイトル
+                  }
+                },
+                y: {
+                  title: {
+                    display: true,
+                    text: '本のタイトル'  // Y軸タイトル
+                  }
+                }
+              }
+            }
+          });
+          
+          // RSSフィードURL
+          const rssUrl = 'https://rss.app/feeds/7HUkwIXHc0btLFSw.xml';
+          
+          // フィードを取得して表示する関数
+          function fetchRSS() {
+            fetch(rssUrl)
+              .then(response => response.text())
+              .then(data => {
+                // RSSフィードをHTMLに変換
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(data, "application/xml");
+                
+                // RSSフィードのアイテムを取得
+                const items = xmlDoc.getElementsByTagName("item");
+                
+                let feedHtml = '<ul>';
+                
+                // アイテムをループして表示
+                for (let i = 0; i < items.length; i++) {
+                  const title = items[i].getElementsByTagName("title")[0].textContent;
+                  const link = items[i].getElementsByTagName("link")[0].textContent;
+                  
+                  feedHtml += `<li><a href="${link}" target="_blank">${title}</a></li>`;
+                }
+                
+                feedHtml += '</ul>';
+                
+                // RSSフィードを#instagram-feedに挿入
+                document.getElementById('instagram-feed').innerHTML = feedHtml;
+              })
+              .catch(error => {
+                console.error('RSSフィードの取得に失敗しました:', error);
+              });
+          }
+          
+          // ページ読み込み時にRSSフィードを取得
+          window.onload = fetchRSS;
+          </script>
+
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+
+<!--<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">-->
+<!--  <a class="navbar-brand col-sm-4 col-md-2 mr-0" href="#">Tokyo Book Cafe</a>-->
+<!--    <form action="search.php" method="POST" class="w-100">-->
+<!--      <input class="form-control form-control-dark" type="text" placeholder="Search">-->
+<!--    </form>-->
+<!--  <ul class="navbar-nav px-3">-->
+<!--    <li class="nav-item text-nowrap">-->
+<!--      <a class="nav-link" href="#">Log out</a>-->
+<!--    </li>-->
+<!--  </ul>-->
+<!--</nav>-->
+<!--<div class="container-fluid">-->
+<!--    <div class="row navbar-expand-md">-->
+<!--        <nav class="col-md-3 col-lg-2 bg-light navbar-collapse collapse sidebar" id="sidenav">-->
+<!--            <div class="sidebar-sticky flex-column w-100 mt-1">-->
+<!--                <ul class="nav flex-column">-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link active" href="#">-->
+<!--                            <span data-feather="home"></span> Dashboard <span class="sr-only">(current)</span>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" href="chats/show">-->
+<!--                            <span data-feather="file">%= link_to 'Chat', root_path, class: "btn btn-light" %></span>-->
+<!--                        </a>-->
+<!--                    </li>-->
                     <!--<li class="nav-item">-->
                     <!--    <a class="nav-link" href="#">-->
                     <!--        <span data-feather="shopping-cart"></span> Products-->
@@ -45,7 +370,7 @@
                     <!--        <span data-feather="layers"></span> Integrations-->
                     <!--    </a>-->
                     <!--</li>-->
-                </ul>
+<!--                </ul>-->
 
             <!--    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">-->
             <!--  <span>Saved reports</span>-->
@@ -75,41 +400,55 @@
             <!--            </a>-->
             <!--        </li>-->
             <!--    </ul>-->
-            </div>
-        </nav>
+<!--            </div>-->
+<!--        </nav>-->
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <div class="container pt-5 pb-5">
-              <p class="<%= flash[:color] %>"><%= notice %></p>
-              <div class="row">
-                <div class="col-2">
+<!--        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-5">-->
+            <!--<div class="container pt-5 pb-5">-->
+<!--              <p class="%= flash[:color] %> ml-sm-auto">%= notice %></p>-->
+<!--              <div class="row" style="background-color: rgba(255, 255, 255, 0.8);">-->
+                <!--<div class="col-2">-->
                   <%#= render 'public/items/genre_list', genres: @genres %>
-                </div>
-                <div class="col-9 offset-1">
-                  <div class="card-top">
-                    <%= image_tag 'daikanyama-about.jpg',class: "card-img" %>
-                    <div class="card-img-overlay ml-4">
-                      <p class="h6 pt-1" style="color: white;">
-                        ようこそ、東京BookCafeへ！<br>
-                        <br>
-                        本を読みながらコーヒーを楽しむBookCafeはいかがでしょうか。<br>
-                        このサイトでは、東京に集まるBookCafe の<br>魅力をお伝えしつつ、<br>
-                        読書家やカフェ好きの、コミュニティスペースとしてご利用頂けます。<br>
-                        また、合わせて<br>コーヒー・書籍の販売(ECサイト)もしております。<br>
-                        気軽にご利用ください。
-                      </p>
-                    </div>
-                  </div>
-                  <h3 class="mt-2">新着商品</h3>
-                  <div class="w-100 d-flex justify-content-center">
+                <!--</div>-->
+<!--                <div class="col-9 offset-1">-->
+<!--                  <div class="card-top">-->
+<!--                    <h3 class="mt-2">ようこそ、東京BookCafeへ！</h3>-->
+<!--                    <p class="h6 pt-1" style="color: black;">-->
+<!--                        本を読みながらコーヒーを楽しむBookCafeは<br>いかがでしょうか。<br><br>-->
+<!--                        このサイトでは、東京に集まるBookCafe の<br>魅力をお伝えしつつ、<br>-->
+<!--                        読書家やカフェ好きの、コミュニティスペースとして<br>ご利用頂けます。<br><br>-->
+<!--                        また、合わせて<br>コーヒー・書籍の販売(ECサイト)もしております。<br><br>-->
+<!--                        気軽にご利用ください。-->
+<!--                      </p>-->
+<!--                    %= image_tag 'daikanyama-about.jpg',class: "card-img" %>-->
+                    <!--<div class="card-img-overlay ml-4">-->
+                      
+                    <!--</div>-->
+<!--                  </div>-->
+<!--                  <h3 class="mt-2">新着商品</h3>-->
+<!--                  <div class="w-100 d-flex justify-content-center">-->
                     <%#= render 'public/items/index', items: @items %>
-                  </div>
-                  <div class="row justify-content-end">
-                    <%= link_to '全ての商品を見る＞', items_path %>
-                  </div>
-                </div>
-              </div>
-            </div>
-        </main>
-    </div>
-</div>
+<!--                  </div>-->
+<!--                  <div class="row justify-content-end">-->
+<!--                    %= link_to '全ての商品を見る＞', items_path %>-->
+<!--                  </div>-->
+                  
+<!--                  <h3>読書記録</h3>-->
+
+<!--                  % @reading_records.each do |record| %>-->
+<!--                    <div>-->
+<!--                      <h3>%= record.title %> by %= record.author %></h3>-->
+<!--                      <p>読んだページ数: %= record.pages_read %></p>-->
+<!--                      <p>読書時間: %= record.reading_time %> 時間</p>-->
+<!--                      <p>読了日: %= record.read_at %></p>-->
+<!--                      <img src="%= record.cover_image %>" alt="%= record.title %>のカバー画像" width="100">-->
+<!--                    </div>-->
+<!--                  % end %>-->
+                  
+<!--                  %= link_to '新しい記録を作成', create_record_path %>-->
+<!--                </div>-->
+<!--              </div>-->
+            <!--</div>-->
+<!--        </main>-->
+<!--    </div>-->
+<!--</div>-->

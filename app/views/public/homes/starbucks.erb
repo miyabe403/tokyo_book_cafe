@@ -1,0 +1,193 @@
+<!-- app/views/products/index.html.erb -->
+
+<!-- app/views/public/homes/starbucks.erb -->
+<h1>スターバックス 商品一覧</h1>
+
+<% if @product_data.present? %>
+  <!-- Flexboxコンテナを設定 -->
+  <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+    <% @product_data.each do |product| %>
+      <!-- 1つの商品情報の表示 -->
+      <div style="flex: 1 1 calc(25% - 20px); box-sizing: border-box; text-align: center; padding: 10px; border: 1px solid #ccc; border-radius: 8px; background-color: #f9f9f9;">
+        
+        <!-- 商品名: 長すぎる場合は省略 -->
+        <h2 style="font-size: 16px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; margin-bottom: 10px;">
+          <%= product['product_name'] %>
+        </h2>
+        
+        <!-- キャッチコピーがない場合でも表示を調整 -->
+        <% if product['catchcopy'].present? %>
+          <p style="font-size: 14px; color: #555; margin-bottom: 10px;"><%= product['catchcopy'] %></p>
+        <% else %>
+          <p style="font-size: 14px; color: #aaa; margin-bottom: 10px;">キャッチコピーはありません</p>
+        <% end %>
+        
+        <!-- 価格 -->
+        <p style="font-size: 16px; font-weight: bold; margin-bottom: 10px;"><%= product['price'] %>円</p>
+        
+        <!-- 絶対URLに変換して画像を表示 -->
+        <img src="<%= product['image1'].start_with?('http') ? product['image1'] : 'https://product.starbucks.co.jp' + product['image1'] %>" alt="<%= product['product_name'] %>" style="width: 100%; height: auto; max-width: 200px; margin-bottom: 10px;">
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>商品情報が読み込めませんでした。</p>
+<% end %>
+
+<!--% if @product_data.present? %>-->
+  <!-- Flexboxコンテナを設定 -->
+<!--  <div style="display: flex; flex-wrap: wrap; gap: 20px;">-->
+<!--    % @product_data.each do |product| %>-->
+      <!-- 1つの商品情報の表示 -->
+<!--      <div style="flex: 1 1 calc(25% - 20px); box-sizing: border-box; text-align: center;">-->
+<!--        <p>%= product['product_name'] %></p>-->
+<!--        <p>%= product['catchcopy'] %></p>-->
+<!--        <p>%= product['price'] %>円</p>-->
+        <!-- 絶対URLに変換して画像を表示 -->
+<!--        <img src="%= product['image1'].start_with?('http') ? product['image1'] : 'https://product.starbucks.co.jp' + product['image1'] %>" alt="%= product['product_name'] %>" style="width: 100%; height: auto; max-width: 200px;">-->
+<!--      </div>-->
+<!--    % end %>-->
+<!--  </div>-->
+<!--% else %>-->
+<!--  <p>商品情報が読み込めませんでした。</p>-->
+<!--% end %>-->
+
+<!--% if @product_data.present? %>-->
+  <!--% @product_data.each do |product| %> <%# %><!-- 配列内のすべての商品をループで表示 -->
+<!--    <h2>%= product['product_name'] %></h2>-->
+<!--    <p>%= product['catchcopy'] %></p>-->
+<!--    <p>%= product['price'] %>円</p>-->
+    <!-- 絶対URLに変換して画像を表示 -->
+<!--    <img src="%= product['image1'].start_with?('http') ? product['image1'] : 'https://product.starbucks.co.jp' + product['image1'] %>" alt="%= product['product_name'] %>">-->
+<!--  % end %>-->
+<!--% else %>-->
+<!--  <p>商品情報が読み込めませんでした。</p>-->
+<!--% end %>-->
+
+<!--% if @product_data.present? %>-->
+<!--  % product = @product_data[0] %> <!-- 配列の最初の要素を取り出す -->
+  
+<!--  <h2>%= product['product_name'] %></h2>-->
+<!--  <p>%= product['catchcopy'] %></p>-->
+<!--  <p>%= product['price'] %>円</p>-->
+  <!-- 絶対URLに変換して画像を表示 -->
+<!--  <img src="%= product['image1'].start_with?('http') ? product['image1'] : 'https://product.starbucks.co.jp' + product['image1'] %>" alt="%= product['product_name'] %>">-->
+<!--% else %>-->
+<!--  <p>商品情報が読み込めませんでした。</p>-->
+<!--% end %>-->
+
+<!--% if @product_data.present? %>-->
+<!--  % product = @product_data[0] %> <!-- 配列の最初の要素を取り出す -->
+  
+<!--  <h2>%= @product_data['product_name'] %></h2>-->
+<!--  <p>%= @product_data['catchcopy'] %></p>-->
+<!--  <p>%= @product_data['price'] %>円</p>-->
+<!--  <img src="%= @product_data['image1'] %>" alt="%= @product_data['product_name'] %>">-->
+
+<!--  <h3>関連商品</h3>-->
+<!--  <ul>-->
+<!--    % @product_data['chunk_products'].each do |product| %>-->
+<!--      <li>-->
+<!--        <h4>%= product['product_name'] %></h4>-->
+<!--        <p>%= product['price'] %>円</p>-->
+<!--      </li>-->
+<!--    % end %>-->
+<!--  </ul>-->
+<!--% else %>-->
+<!--  <p>商品情報が読み込めませんでした。</p>-->
+<!--% end %>-->
+
+<!-- デバッグ用：JSONデータをpreタグで出力 -->
+<!--<pre class="debug_dump">-->
+<!--  %= @product_data.to_json %>-->
+<!--</pre>-->
+
+<!-- app/views/public/homes/starbucks.erb -->
+<!--<h1>スターバックス 商品一覧</h1>-->
+
+<!--% if @product_data.present? %>-->
+<!--  <h2>%= @product_data['product_name'] %></h2>-->
+<!--  <p>%= @product_data['catchcopy'] %></p>-->
+<!--  <p>%= @product_data['price'] %>円</p>-->
+<!--  <img src="%= @product_data['image1'] %>" alt="%= @product_data['product_name'] %>">-->
+
+<!--  <h3>関連商品</h3>-->
+<!--  <ul>-->
+<!--    % @product_data['chunk_products'].each do |product| %>-->
+<!--      <li>-->
+<!--        <h4>%= product['product_name'] %></h4>-->
+<!--        <p>%= product['price'] %>円</p>-->
+<!--      </li>-->
+<!--    % end %>-->
+<!--  </ul>-->
+<!--% else %>-->
+<!--  <p>商品情報が読み込めませんでした。</p>-->
+<!--% end %>-->
+
+<%# デバッグ用: @product_dataの内容を表示 %>
+<!--%= debug(@product_data) %>-->
+
+<!--<h1>スターバックス 商品一覧</h1>-->
+
+<!--% if @product_data.present? %>-->
+<!--  <h2>%= @product_data['product_name'] %></h2>-->
+<!--  <p>%= @product_data['catchcopy'] %></p>-->
+<!--  <p>%= @product_data['price'] %>円</p>-->
+<!--  <img src="%= @product_data['image1'] %>" alt="%= @product_data['product_name'] %>">-->
+
+<!--  <h3>関連商品</h3>-->
+<!--  <ul>-->
+<!--    % @chunk_products.each do |product| %>-->
+<!--      <li>-->
+<!--        <h4>%= product['product_name'] %></h4>-->
+<!--        <p>%= product['price'] %>円</p>-->
+<!--      </li>-->
+<!--    % end %>-->
+<!--  </ul>-->
+<!--% else %>-->
+<!--  <p>商品情報が読み込めませんでした。</p>-->
+<!--% end %>-->
+
+<!--<h1>Starbucks Beverage Menu</h1>-->
+
+
+<!--% if @menu_items && @menu_items.any? %>-->
+<!--  <ul>-->
+<!--    % @menu_items.each do |product| %>-->
+<!--      <h2>%= product['product_name'] %></h2>-->
+<!--      <p>%= product['catchcopy'] %></p>-->
+<!--      <p>Price: %= product['price'] %> yen</p>-->
+<!--      % if product['image1'] %>-->
+<!--        <img src="%= product['image1'] %>" alt="%= product['product_name'] %>">-->
+<!--      % end %>-->
+<!--    % end %>-->
+<!--  </ul>-->
+<!--% else %>-->
+<!--  <p>%= @error_message || "No menu items available at the moment." %></p>-->
+<!--% end %>-->
+
+<!--% if @menu_items && @menu_items.any? %>-->
+<!--  <ul>-->
+<!--    % @menu_items.each do |category| %>-->
+<!--      <h2>%= category['categoryName'] %></h2>-->
+<!--      <ul>-->
+<!--        % category['productList'].each do |item| %>-->
+<!--          <li>%= item['productName'] %> - %= item['price'] %></li>-->
+<!--        % end %>-->
+<!--      </ul>-->
+<!--    % end %>-->
+<!--  </ul>-->
+<!--% else %>-->
+<!--  <p>No menu items available at the moment.</p>-->
+<!--% end %>-->
+
+<!--<ul>-->
+<!--  % @menu_items.each do |category| %>-->
+<!--    <h2>%= category['categoryName'] %></h2>-->
+<!--    <ul>-->
+<!--      % category['productList'].each do |item| %>-->
+<!--        <li>%= item['productName'] %> - %= item['price'] %></li>-->
+<!--      % end %>-->
+<!--    </ul>-->
+<!--  % end %>-->
+<!--</ul>-->
