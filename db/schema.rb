@@ -104,6 +104,13 @@ ActiveRecord::Schema.define(version: 2023_10_12_180249) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
+  
+  create_table "drinks", force: :cascode do |t|
+    t.integer "product_code", null: false
+    t.string "product_name", null: false
+    t.text "product_note", null: false
+    t.string "image1" 
+  end
 
   create_table "order_details", force: :cascade do |t|
     t.integer "order_id", null: false

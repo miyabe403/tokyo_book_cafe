@@ -32,7 +32,7 @@
           <div class="mr-3 menu"><%= button_to 'ログアウト', destroy_customer_session_path, method: :delete, class: "btn btn-light" %></div>
         <% else %>
           <div class="mr-3 menu"><%= link_to 'About', about_path, class: "btn btn-light" %></div>
-          <div class="mr-3 menu"><%= link_to '商品一覧', items_path, class: "btn btn-light" %></div>
+          <div class="mr-3 menu"><%= link_to '商品一覧', starbucks_path, class: "btn btn-light" %></div>
           <div class="mr-3 menu"><%= link_to '新規登録', new_customer_registration_path, class: "btn btn-light" %></div>
           <div class="mr-3 menu"><%= link_to 'ログイン', customer_session_path, class: "btn btn-light" %></div>
         <% end %>

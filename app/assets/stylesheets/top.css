@@ -1,0 +1,34 @@
+/* top.css */
+
+/* ナビゲーションバーのリンクのスタイル */
+.navbar-nav .nav-item a {
+  color: white; /* リンクの文字色を白に設定 */
+  text-decoration: none; /* 下線を削除 */
+  padding: 10px 15px; /* リンクにパディングを追加 */
+  display: block; /* リンクがブロック要素として扱われるようにする */
+}
+
+/* リンクをホバーしたときのスタイル */
+.navbar-nav .nav-item a:hover {
+  background-color: #007bff; /* ホバー時に背景色を青に変更 */
+  color: white; /* ホバー時の文字色を白に変更 */
+  text-decoration: none; /* 下線を削除 */
+}
+
+/* ナビゲーションバーのリンクがクリックできない場合のスタイル */
+.navbar-nav .nav-item a:disabled {
+  cursor: not-allowed; /* クリックできない状態でカーソルを表示 */
+  color: #ccc; /* 文字色を灰色に変更 */
+}
+
+/* サイドバー内のリンクのスタイル */
+.sidebar .nav-link {
+  color: #333; /* リンクの文字色 */
+  text-decoration: none; /* 下線を削除 */
+  padding: 8px 12px; /* パディングを追加 */
+}
+
+.sidebar .nav-link:hover {
+  background-color: #f8f9fa; /* ホバー時に背景色を変更 */
+  color: #007bff; /* ホバー時の文字色を青に変更 */
+}
