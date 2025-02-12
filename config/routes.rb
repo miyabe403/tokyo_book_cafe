@@ -2,6 +2,12 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root :to => "homes#top"
+    get '/starbucks' => "homes#starbucks"
+    # GETリクエストのルート：フォーム表示用
+    get 'homes/create_record', to: 'homes#create_record_form', as: 'create_record_form'
+    
+    # POSTリクエストのルート：フォーム送信後の処理
+    post 'homes/create_record', to: 'homes#create_record', as: 'create_record_post'  # フォーム送信後にデータを保存するPOSTルート
     get '/about' => "homes#about"
     resources :items, only: [:index, :show]
 
